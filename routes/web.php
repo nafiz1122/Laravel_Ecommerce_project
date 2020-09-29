@@ -48,4 +48,8 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('/AllColor','ColorController@index');
     Route::post('/storeColor','ColorController@store');
 
+    //Product Crud
+    Route::get('/allProduct','ProductController@index');
+    Route::post('/storeProduct','ProductController@store');
+
 });

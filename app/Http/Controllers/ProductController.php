@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Brand;
+use App\Color;
+use App\Size;
+use App\ProductSize;
+use App\ProductColor;
 use App\Product;
+use App\ProductSubImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product.allProduct');
     }
 
     /**
