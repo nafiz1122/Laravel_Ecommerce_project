@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="/admin_assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="/admin_assets/css/style.css">
+    {{-- //select 2 --}}
+    <link rel="stylesheet" href="/admin_assets/plugins/select2.min.css">
+    <link rel="stylesheet" href="/admin_assets/plugins/select2-bootstrap4.min.css">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
@@ -84,7 +87,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>User</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="pe-7s-users"></i><a href="ui-buttons.html">User</a></li>
+                            <li><i class="fa fa-plus-circle"></i><a href=" {{route('user.add')}} ">Add User</a></li>
+                            <li><i class="pe-7s-users"></i><a href=" {{route('user.list')}} ">User List</a></li>
                         </ul>
                     </li>
                     {{-- ----menu------ --}}
@@ -324,7 +328,8 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="assets/js/init/fullcalendar-init.js"></script>
-
+    {{-- select2 js --}}
+    <script src="/admin_assets/plugins/select2.min.js"></script>
 
 
     <!--Local Stuff-->
@@ -534,5 +539,39 @@
         })
 
     </script>
+    {{-- select 2 function --}}
+    <script>
+
+          $(function(){
+            //Initialize Select2 Elements
+            $('.select2').select2()
+          })
+    </script>
+        {{-- //for image show --}}
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.addEventListener(
+                    "load",
+                            function() {
+                                var avatarImg = new Image();
+                                var src = reader.result;
+                                avatarImg.src = src;
+                                avatarImg.onload = function() {
+                                var c = document.getElementById("myImageCanvus");
+                                var ctx = c.getContext("2d");
+                                ctx.canvas.width = avatarImg.width;
+                                ctx.canvas.height = avatarImg.height;
+                                ctx.drawImage(avatarImg, 0, 0);
+                                };
+                            },
+                            false
+                            );
+
+                            reader.readAsDataURL(input.files[0]);
+                    }
+                    }
+        </script>
 </body>
 </html>

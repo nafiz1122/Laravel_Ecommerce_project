@@ -22,6 +22,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth','admin']], function () {
 
     Route::get('/dashboard','AdminController@index');
+
+    Route::group(['prefix' => 'user'], function () {
+        //user crud
+        Route::get('/list','UserController@index')->name('user.list');
+        Route::get('/add','UserController@add')->name('user.add');
+        Route::post('/store','UserController@store')->name('user.store');
+        Route::get('/edit/{id}','UserController@edit')->name('user.edit');
+        Route::post('/update/{id}','UserController@update')->name('user.update');
+        Route::get('/delete/{id}','UserController@delete')->name('user.delete');
+    });
+
+
     //category crud
     Route::get('/addCategory','CategoryController@index');
     Route::post('/addCategory','CategoryController@store');
@@ -50,6 +62,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
 
     //Product Crud
     Route::get('/allProduct','ProductController@index');
+    Route::get('/addProduct','ProductController@add');
     Route::post('/storeProduct','ProductController@store');
 
 });

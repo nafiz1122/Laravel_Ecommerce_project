@@ -4,33 +4,6 @@
 Size
 @endsection
 @section('content')
-{{-- ------Modal-------- --}}
-<!-- Button trigger modal -->
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add Size</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <form action="{{ url('/storeProduct') }}" method="POST" >
-              @csrf
-              <div class="form-group">
-                  <label for="">Color Name</label>
-                  <input type="text" name="color_name" class="form-control" placeholder="Enter Color Name" >
-              </div>
-              <button class="btn btn-success btn-sm" type="submit">Submit</button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-{{-- ------Modal-------- --}}
 <div class="container">
     <div class="row">
             <div class="breadcrumbs">
@@ -60,7 +33,7 @@ Size
             <div class="card">
                 <div class="card-body">
                     <div class="card-head">
-                        <button class="btn btn-success btn-sm pull-right m-2"  data-toggle="modal" data-target="#exampleModalCenter" > <b>+</b> Add Product</button>
+                        <a href="{{ url('/addProduct') }}"><button class="btn btn-success btn-sm pull-right m-2"> <b>+</b>Add Product</button></a>
                         <h3>All Product</h3>
 
                         <!-- --------error message------------ -->
