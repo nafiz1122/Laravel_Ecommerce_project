@@ -4,6 +4,12 @@
 Size
 @endsection
 @section('content')
+<style>
+    label{
+        color: black;
+        font-weight: 600;
+    }
+</style>
 <div class="container">
     <div class="row">
             <div class="breadcrumbs">
@@ -54,13 +60,13 @@ Size
 
                 </div>
                 <div class="card-body">
-                    <form action=" {{url('/storeProduct')}} " method="POST" enctype="multipart/form-data">
+                    <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group col-md-4 pull-left">
                                 <label for="">Select Category </label>
                                 <select class="form-control" name="category_id" id="">
                                     @foreach ($category as $item)
-                                    <option value="{{$item->id}}"> {{$item->category_name}} </option>
+                                    <option value="{{$item->id}}" > {{$item->category_name}} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -74,7 +80,7 @@ Size
                             </div>
                             <div class="form-group col-md-4 pull-left">
                                 <label for="">Product Name</label>
-                                <input name="product_name" type="text" class="form-control" placeholder="Product Name">
+                                <input name="product_name" type="text" class="form-control"  placeholder="Product Name" value="  " >
                             </div>
                             <div class="form-group col-md-6 pull-left">
                                 <label for="">Color </label>

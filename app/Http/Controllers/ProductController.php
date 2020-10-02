@@ -22,7 +22,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.allProduct');
+        $products =Product::all();
+        return view('admin.product.allProduct',compact('products'));
     }
     public function add()
     {
@@ -68,12 +69,47 @@ class ProductController extends Controller
                 $img->move('public/Upload/Product_images/',$imgName);
                 $product->image =$imgName;
             }
+            //now upload another table data
+            if($product->save()){
+                $files = $request->sub_image;
+                if (!empty($files)) {
 
-            $product->save();
+                        foreach ($files as $file) {
+                        $imgName = date('YmsHi').$file->getClientOriginalName();
+                        $file->move('public/Upload/Product_images/Product_Sub_Images',$imgName);
+                        $subimage['sub_image'] = $imgName;
 
+                        $subimage = new ProductSubImage();
+                        $subimage->product_id = $product->id;
+                        $subimage->sub_image =  $imgName;
+                        $subimage->save();
+                    }
+                }
+                //colors table upload
+                $colors = $request->color_id;
+                if (!empty($colors)) {
+                    foreach ($colors as $key => $color) {
 
+                        $mycolor = new ProductColor();
+                        $mycolor->product_id =$product->id;
+                        $mycolor->color_id = $color;
+                        $mycolor->save();
+                    }
+                }
+                //sizes table upload
+                $sizes = $request->color_id;
+                if (!empty($sizes)) {
+                    foreach ($sizes as $key => $size) {
+                        $mysize = new ProductSize();
+                        $mysize->product_id =$product->id;
+                        $mysize->size_id = $size;
+                        $mysize->save();
+                    }
+                }
 
+            }
         });
+        return redirect()->route('product.list')->with('message','product Add Successfully!');
     }
 
     /**
@@ -93,9 +129,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product,$id)
     {
-        //
+        $editProduct = Product::find($id);
+        $category    = Category::where('status',1)->get();
+        $brand       = Brand::where('status',1)->get();
+        $sizes       = Size::all();
+        $colors      = Color::all();
+        $color_array = ProductColor::Select('color_id')->where('product_id',$editProduct->id)->get()->toArray();
+        $size_array = ProductSize::Select('size_id')->where('product_id',$editProduct->id)->get()->toArray();
+        //dd($color_array->);
+        return view('admin.product.editProduct',compact('editProduct','category','brand','sizes','colors','color_array','size_array'));
     }
 
     /**

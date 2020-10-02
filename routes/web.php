@@ -61,8 +61,10 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::post('/storeColor','ColorController@store');
 
     //Product Crud
-    Route::get('/allProduct','ProductController@index');
+    Route::get('/allProduct','ProductController@index')->name('product.list');
     Route::get('/addProduct','ProductController@add');
-    Route::post('/storeProduct','ProductController@store');
+    Route::post('/storeProduct','ProductController@store')->name('product.store');
+    Route::get('/editProduct/{id}','ProductController@edit')->name('edit.product');
+    Route::post('/updateProduct/{id}','ProductController@update')->name('product.update');
 
 });

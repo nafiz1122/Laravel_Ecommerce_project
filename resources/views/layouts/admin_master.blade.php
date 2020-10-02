@@ -123,6 +123,12 @@
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Manage Color</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-plus" aria-hidden="true"></i><a href="{{URL::to('/AllColor') }}">Add Color</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Products*</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-book"></i><a href="{{URL::to('/allProduct') }}">All Product</a></li>
