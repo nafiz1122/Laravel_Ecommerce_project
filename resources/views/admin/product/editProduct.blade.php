@@ -60,7 +60,7 @@
 
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action=" {{route('product.update',$editProduct->id)}} " method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group col-md-4 pull-left">
                                 <label for="">Select Category </label>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="form-group col-md-4 pull-left">
                                 <label for="">Product Name</label>
-                                <input name="product_name" type="text" class="form-control" value=" {{$editProduct->name}} " >
+                                <input name="product_name" type="text" class="form-control" value=" {{$editProduct->name}}" >
                             </div>
                             <div class="form-group col-md-6 pull-left">
                                 <label for="">Color </label>

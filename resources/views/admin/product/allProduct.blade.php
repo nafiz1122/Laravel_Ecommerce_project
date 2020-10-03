@@ -83,9 +83,11 @@ Size
                         <img  width="80px" src="/public/Upload/Product_images/{{ $product->image }}" alt="">
                         </td>
                         <td width="15%" >
+                        <a class="btn btn-success btn-sm" href=" {{route('product.view',$product->id)}}"> <i class="fa fa-eye"></i></a>
+
                         <a class="btn btn-primary btn-sm" href=" {{route('edit.product',$product->id)}}"> <i class="fa fa-edit" ></i> </a>
 
-                            <a class="btn btn-danger btn-sm" href=""> <i class="fa fa-trash" ></i> </a>
+                            <a class="btn btn-danger btn-sm" href="{{route('product.delete',$product->id)}}" data-token=" {{csrf_token()}}" data-id="{{$product->id}}" > <i class="fa fa-trash" ></i> </a>
                         </td>
                     </tr>
                     @endforeach
