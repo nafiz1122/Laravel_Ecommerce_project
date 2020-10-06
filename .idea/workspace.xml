@@ -20,13 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00f5426a-fa5b-4a1d-b696-4d083dd39c1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/product/editProduct.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/addProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/addProduct.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/allProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/allProduct.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin_master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin_master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/NewEco.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NewEco.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/client/content.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/content.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/client_master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/client_master.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/laravel/helpers" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iI4dz84cehLP9STRZXZlIdw9L1" />
@@ -181,6 +180,7 @@
       <updated>1601581865068</updated>
       <workItem from="1601581867459" duration="163000" />
       <workItem from="1601582048380" duration="347000" />
+      <workItem from="1601756875996" duration="39000" />
     </task>
     <servers />
   </component>

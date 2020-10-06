@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','ClientCOntroller@index');
+Route::get('/','ClientController@index')->name('index');
+Route::get('/product-store','ClientController@productStore')->name('product_store');
+Route::get('/product-category/{category_id}','ClientController@productByCategory')->name('product_by_category');
+Route::get('/product_details/{slug}','ClientController@productDetails');
+
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+//admin route
 Route::group(['middleware' => ['auth','admin']], function () {
 
     Route::get('/dashboard','AdminController@index');

@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products =Product::all();
+        $products =Product::orderBy('id', 'DESC')->get();
         return view('admin.product.allProduct',compact('products'));
     }
     public function add()
@@ -32,7 +32,7 @@ class ProductController extends Controller
         $category = Category::where('status',1)->get();
         $brand    = Brand::where('status',1)->get();
         $sizes    = Size::all();
-        $colors    = Color::all();
+        $colors   = Color::all();
         return view('admin.product.addProduct',compact('category','brand','sizes','colors'));
     }
 
@@ -161,7 +161,7 @@ class ProductController extends Controller
             $product->category_id = $request->category_id;
             $product->brand_id = $request->brand_id;
             $product->name = $request->product_name;
-            $product->slug = str_slug($product->name);
+            $product->slug = str_slug($product->name, "-");
             $product->short_des = $request->short_des;
             $product->long_des = $request->long_des;
             $product->price = $request->price;
