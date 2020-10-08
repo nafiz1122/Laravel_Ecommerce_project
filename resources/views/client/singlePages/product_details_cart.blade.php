@@ -90,7 +90,9 @@
 								{{-- <span class="product-available">In Stock</span> --}}
 							</div>
 							<p>{{$product->short_des}}</p>
-
+                            <form action=" {{route('cart.store')}} " method="POST">
+                                <input type="hidden" name="product_id" value=" {{$product->id}} " >
+                                @csrf
 							<div class="product-options">
 								<label>
 									Size
@@ -106,7 +108,12 @@
 								<label>
 									Color
 									<select class="input-select">
-										<option value="0">Red</option>
+										@php
+                                        $colors =App\ProductColor::where('product_id',$product->id)->get();
+                                        @endphp
+                                        @foreach ($colors as $c)
+                                        <option value="0">{{$c['color']['color_name']}}</option>
+                                        @endforeach
 									</select>
 								</label>
 							</div>
@@ -115,12 +122,13 @@
 								<div class="qty-label">
 									Qty
 									<div class="input-number">
-										<input type="number" value="1">
+										<input name="qty" type="number" value="1">
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                 <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </form>
 							</div>
 
 							<ul class="product-btns">

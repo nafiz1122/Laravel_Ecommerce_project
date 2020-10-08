@@ -17,6 +17,11 @@ Route::get('/','ClientController@index')->name('index');
 Route::get('/product-store','ClientController@productStore')->name('product_store');
 Route::get('/product-category/{category_id}','ClientController@productByCategory')->name('product_by_category');
 Route::get('/product_details/{slug}','ClientController@productDetails');
+//cart route
+Route::post('/add-to-cart','ClientController@add_to_cart')->name('cart.store');
+Route::get('/show_to_cart','ClientController@show_cart')->name('cart.show');
+Route::post('/update_to_cart','ClientController@update_cart')->name('cart.update');
+Route::get('/delete_to_cart/{rowId}','ClientController@delete_cart')->name('cart.delete');
 
 
 Auth::routes();

@@ -26,6 +26,7 @@
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="/client_assets/css/style.css"/>
 
+
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -204,6 +205,7 @@
 		<script src="/client_assets/js/nouislider.min.js"></script>
 		<script src="/client_assets/js/jquery.zoom.min.js"></script>
 		<script src="/client_assets/js/main.js"></script>
+		<script src="/client_assets/js/cart.js"></script>
 
 	</body>
 </html>
