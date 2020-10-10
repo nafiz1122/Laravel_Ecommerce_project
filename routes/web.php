@@ -23,6 +23,12 @@ Route::get('/show_to_cart','ClientController@show_cart')->name('cart.show');
 Route::post('/update_to_cart','ClientController@update_cart')->name('cart.update');
 Route::get('/delete_to_cart/{rowId}','ClientController@delete_cart')->name('cart.delete');
 
+//costumer route
+Route::get('/customer-login','CheckoutController@customer_login')->name('customers.login');
+Route::get('/customer-sign-up','CheckoutController@customer_sign_up')->name('customer.sign-up');
+Route::post('/customer-sign-up-store','CheckoutController@customer_sign_up_store')->name('store.sign-up');
+
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
