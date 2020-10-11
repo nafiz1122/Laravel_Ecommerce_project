@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>Electro  Ecommerce Template</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -22,7 +22,8 @@
 
 		<!-- Font Awesome Icon -->
 		<link rel="stylesheet" href="/client_assets/css/font-awesome.min.css">
-
+		<!-- Notification toastr -->
+		<link rel="stylesheet" href="/client_assets/css/toastr.min.css">
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="/client_assets/css/style.css"/>
 
@@ -196,7 +197,10 @@
 			</div>
 			<!-- /bottom footer -->
 		</footer>
-		<!-- /FOOTER -->
+        <!-- /FOOTER -->
+
+
+
 
 		<!-- jQuery Plugins -->
 		<script src="/client_assets/js/jquery.min.js"></script>
@@ -206,6 +210,33 @@
 		<script src="/client_assets/js/jquery.zoom.min.js"></script>
 		<script src="/client_assets/js/main.js"></script>
 		<script src="/client_assets/js/cart.js"></script>
+        <script src="/client_assets/js/notify.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="/client_assets/js/toastr.min.js"></script>
+         {{-- toastr script --}}
+        <script>
+            @if(Session::has('message'))
+                var type="{{Session::get('alert-type','info')}}"
+
+                switch(type){
+                    case 'info':
+                        toastr.info("{{ Session::get('message') }}");
+                        break;
+                    case 'success':
+                        toastr.success("{{ Session::get('message') }}");
+                        break;
+                    case 'primary':
+                        toastr.primary("{{ Session::get('message') }}");
+                        break;
+                    case 'warning':
+                        toastr.warning("{{ Session::get('message') }}");
+                        break;
+                    case 'error':
+                        toastr.error("{{ Session::get('message') }}");
+                        break;
+                }
+            @endif
+        </script>
 
 	</body>
 </html>

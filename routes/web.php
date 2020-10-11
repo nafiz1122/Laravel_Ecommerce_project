@@ -27,6 +27,8 @@ Route::get('/delete_to_cart/{rowId}','ClientController@delete_cart')->name('cart
 Route::get('/customer-login','CheckoutController@customer_login')->name('customers.login');
 Route::get('/customer-sign-up','CheckoutController@customer_sign_up')->name('customer.sign-up');
 Route::post('/customer-sign-up-store','CheckoutController@customer_sign_up_store')->name('store.sign-up');
+Route::get('/customer-sign-up-verify','CheckoutController@customer_sign_up_verify')->name('verify.sign-up');
+Route::post('/sign-up-verify-store','CheckoutController@sign_up_verify_store')->name('verify.store');
 
 
 
@@ -85,5 +87,8 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::post('/updateProduct/{id}','ProductController@update')->name('product.update');
     Route::get('/deleteProduct/{id}','ProductController@delete')->name('product.delete');
     Route::get('/viewProduct/{id}','ProductController@view')->name('product.view');
+    //customer crud
+    Route::get('/allcustomer','CustomerController@index')->name('customer.view');
+    Route::get('/allcustomer_draft','CustomerController@draft_customer')->name('customer.view.draft');
 
 });

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="/admin_assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="/admin_assets/css/style.css">
+    {{-- for toastr notification --}}
+    <link rel="stylesheet" href="/admin_assets/css/toastr.min.css">
     {{-- //select 2 --}}
     <link rel="stylesheet" href="/admin_assets/plugins/select2.min.css">
     <link rel="stylesheet" href="/admin_assets/plugins/select2-bootstrap4.min.css">
@@ -132,6 +134,13 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Products*</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-book"></i><a href="{{URL::to('/allProduct') }}">All Product</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Customers</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-book"></i><a href="{{route('customer.view') }}">View Customers</a></li>
+                            <li><i class="fa fa-book"></i><a href="{{route('customer.view.draft')}}">Draft Customers</a></li>
                         </ul>
                     </li>
                     {{-- <li class="menu-item-has-children dropdown">
@@ -336,6 +345,8 @@
     <script src="assets/js/init/fullcalendar-init.js"></script>
     {{-- select2 js --}}
     <script src="/admin_assets/plugins/select2.min.js"></script>
+    {{-- Toastr js --}}
+    <script src="/admin_assets/js/toastr.min.js"></script>
 
 
     <!--Local Stuff-->
@@ -578,6 +589,27 @@
                             reader.readAsDataURL(input.files[0]);
                     }
                     }
+        </script>
+         {{-- toastr script --}}
+        <script>
+            @if(Session::has('message'))
+                var type="{{Session::get('alert-type','info')}}"
+
+                switch(type){
+                    case 'info':
+                        toastr.info("{{ Session::get('message') }}");
+                        break;
+                    case 'success':
+                        toastr.success("{{ Session::get('message') }}");
+                        break;
+                    case 'warning':
+                        toastr.warning("{{ Session::get('message') }}");
+                        break;
+                    case 'error':
+                        toastr.error("{{ Session::get('message') }}");
+                        break;
+                }
+            @endif
         </script>
 </body>
 </html>

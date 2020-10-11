@@ -44,8 +44,14 @@ class CategoryController extends Controller
         $category->category_description = $request->input('category_des');
         $category->status = $request->input('status',0);
         $category->save();
-        return back()->with('message', 'Category Add Successfully');
-        
+        //notification
+        $notification = array(
+            'message' =>'Successfully Data Inserted ',
+            'alert-type' =>'success'
+             );
+        return back()->with($notification);
+
+
     }
 
     /**

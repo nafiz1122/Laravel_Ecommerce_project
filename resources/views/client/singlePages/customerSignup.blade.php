@@ -36,9 +36,6 @@
                     <form id="login-form" class="form" action=" {{route('store.sign-up')}} " method="post">
                         @csrf
                         <h3 class="text-center text-info">Sign-up</h3>
-                        @if(Session::has('message'))
-                            <p class="alert alert-info mt-2">{{ Session::get('message') }}</p>
-                        @endif
                         <div class="form-group">
                             <label for="username" class="text-info">Name</label><br>
                             <input type="text" name="username" id="username" class="form-control">
@@ -78,7 +75,26 @@
         </div>
     </div>
 </div>
+<script>
+    @if(Session::has('message'))
+        var type="{{Session::get('alert-type','info')}}"
 
+        switch(type){
+            case 'info':
+                 toastr.info("{{ Session::get('message') }}");
+                 break;
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
+        }
+    @endif
+</script>
 <script>
     var uname       = document.querySelector("#username");
     var errUname    = document.querySelector("#errUsername");

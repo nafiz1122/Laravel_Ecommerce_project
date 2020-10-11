@@ -60,8 +60,12 @@ class ClientController extends Controller
                 'image' =>$product_info->image
             ]
         ]);
-
-        return redirect()->route('cart.show');
+        //notification
+        $notification = array(
+            'message' =>'Cart add Successfully ',
+            'alert-type' =>'success'
+             );
+        return redirect()->route('cart.show')->with($notification);
     }
 
     public function show_cart()
