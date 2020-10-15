@@ -107,7 +107,11 @@
                         <li>Total <span>{{$total}} TK</span></li>
                     </ul>
                         <button type="submit" class="btn btn-default update" href="">Update</button>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
+                        @if (@Auth::user()->id != NULL)
+                            <a class="btn btn-default check_out" href=" {{route('customers.checkout')}} ">Check Out</a>
+                        @else
+                            <a class="btn btn-default check_out" href=" {{route('customers.login')}} ">Check Out</a>
+                        @endif
                 </div>
             </form>
             </div>

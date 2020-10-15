@@ -91,6 +91,11 @@ class CheckoutController extends Controller
         }
     }
 
+    public function checkOut()
+    {
+        dd("OK");
+    }
+
 
 }
 

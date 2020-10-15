@@ -8,9 +8,24 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+                <li><a href="#"><i class="fa fa-dollar"></i> BDT</a></li>
+            @if(@Auth::user()->id != NULL)
+            <li class="active-menu">
+            <ul class="sub-menu" >
+                <li><a href="#"><i class="fa fa-user-o"></i> My Dashboard</a></li>
+                <li><a href="#"><i class="fa fa-user-o"></i> My Profile</a></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"
+                     ><i class="fa fa-user-o"></i> Logout</a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            </ul>
+            </li>
+            @else
             <li><a href="{{ url('/customer-login') }}"><i class="fa fa-user-o"></i> Login</a></li>
-            <li><a href="{{ route('customer.sign-up') }}"><i class="fa fa-user-o"></i> Sign-up</a></li>
+            @endif
             </ul>
         </div>
     </div>

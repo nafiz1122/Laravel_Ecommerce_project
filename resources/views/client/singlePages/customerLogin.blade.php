@@ -32,16 +32,21 @@
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-12 offset-4">
                 <div id="login-box" class="col-md-6">
-                    <form id="login-form" class="form" action="" method="post">
+                    <form id="login-form" class="form" method="POST" action="{{ route('login') }}">
+                        @csrf
                         <h3 class="text-center text-info">Login</h3>
+                        {{--  --------NOTIFICATION------  --}}
+                        @if(Session::has('message'))
+                        <p class="alert alert-danger mt-2">{{ Session::get('message') }}</p>
+                        @endif
                         <div class="form-group">
-                            <label for="username" class="text-info">Username:</label><br>
-                            <input type="text" name="username" id="username" class="form-control">
+                            <label for="username" class="text-info">Email:</label><br>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}"  autocomplete="email" autofocus>
                             <font style="color: red" id="unameErr" ></font>
                         </div>
                         <div class="form-group">
                             <label for="password" class="text-info">Password:</label><br>
-                            <input type="text" name="password" id="password" class="form-control">
+                            <input class="form-control" type="password" id="password" name="password" placeholder="Password" required autocomplete="current-password" >
                         </div>
                         <div class="form-group">
                             <button type="submit" onclick="return validation()" class="btn btn-primary" >Submit</button>
@@ -55,19 +60,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    var uname= document.querySelector("#username");
-    var unameErr= document.querySelector("#unameErr");
-    function validation()
-    {
-        if(uname.value === "")
-        {
-            unameErr.innerHTML="Please write your user name";
-        }
-
-        return false;
-    }
-</script>
-
 @endsection

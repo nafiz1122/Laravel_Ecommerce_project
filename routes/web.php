@@ -29,15 +29,19 @@ Route::get('/customer-sign-up','CheckoutController@customer_sign_up')->name('cus
 Route::post('/customer-sign-up-store','CheckoutController@customer_sign_up_store')->name('store.sign-up');
 Route::get('/customer-sign-up-verify','CheckoutController@customer_sign_up_verify')->name('verify.sign-up');
 Route::post('/sign-up-verify-store','CheckoutController@sign_up_verify_store')->name('verify.store');
+Route::get('/checkout','CheckoutController@checkOut')->name('customers.checkout');
 
 
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+//customer group route
+Route::group(['middleware' => ['auth','customer']], function () {
 
+    Route::get('/customer-dashboard','CustomerDashboardController@index');
 
-
-//admin route
+});
+//admin group route
 Route::group(['middleware' => ['auth','admin']], function () {
 
     Route::get('/dashboard','AdminController@index');

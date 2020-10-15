@@ -19,7 +19,14 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+
+            if(Auth::user()->role_type == 'admin'){
+                return redirect("/dashboard");
+            }
+            else if(Auth::user()->role_type == 'customer'){
+                return redirect("/customer-dashboard");
+            }
+
         }
 
         return $next($request);

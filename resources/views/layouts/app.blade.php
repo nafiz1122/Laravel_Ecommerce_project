@@ -18,10 +18,29 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- login css --}}
+    <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/login_assets/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/login_assets/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/login_assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/login_assets/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/login_assets/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/login_assets/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/login_assets/css/utisl.css">
+        <link rel="stylesheet" type="text/css" href="/login_assets/css/main.css">
+    <!--===============================================================================================-->
+    <!-- Notification toastr -->
+		<link rel="stylesheet" href="/client_assets/css/toastr.min.css">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -70,11 +89,53 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    <!--===============================================================================================-->
+	<script src="/login_assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/login_assets/vendor/bootstrap/js/popper.js"></script>
+        <script src="/login_assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/login_assets/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="/login_assets/vendor/tilt/tilt.jquery.min.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="/client_assets/js/toastr.min.js"></script>
+        <script >
+            $('.js-tilt').tilt({
+                scale: 1.1
+            })
+        </script>
+    <!--===============================================================================================-->
+        <script src="/login_assets/js/main.js"></script>
+         {{-- toastr script --}}
+         <script>
+            @if(Session::has('message'))
+                var type="{{Session::get('alert-type','info')}}"
+
+                switch(type){
+                    case 'info':
+                        toastr.info("{{ Session::get('message') }}");
+                        break;
+                    case 'success':
+                        toastr.success("{{ Session::get('message') }}");
+                        break;
+                    case 'primary':
+                        toastr.primary("{{ Session::get('message') }}");
+                        break;
+                    case 'warning':
+                        toastr.warning("{{ Session::get('message') }}");
+                        break;
+                    case 'error':
+                        toastr.error("{{ Session::get('message') }}");
+                        break;
+                }
+            @endif
+        </script>
 </body>
 </html>
