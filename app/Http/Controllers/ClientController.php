@@ -41,15 +41,18 @@ class ClientController extends Controller
         $categories = Product::select('category_id')->groupBy('category_id')->get();
         $product    =Product::where('slug',$slug)->first();
         //dd($product->name);
-        return view('client.singlePages.product_details_cart',compact('product','categories'));
+        $product_sizes  = ProductSize::where('product_id',$product->id)->get();
+        $product_colors = ProductColor::where('product_id',$product->id)->get();
+        //dd($product_sizes);
+        return view('client.singlePages.product_details_cart',compact('product','categories','product_sizes','product_colors'));
     }
 
+    //add to cart
     public function add_to_cart(Request $request)
     {
-        $product_info   = Product::
-                        where('id',$request->product_id)
-                        ->first();
-
+        $product_info = Product::where('id',$request->product_id)->first();
+        $product_size = Size::where('id',$request->size_id)->first();
+        $product_color = Color::where('id',$request->color_id)->first();
         Cart::add([
             'id'        => $product_info->id,
             'qty'       =>$request->qty,
@@ -57,6 +60,11 @@ class ClientController extends Controller
             'name'      =>$product_info->name,
             'weight'    =>550,
             'options' =>[
+
+                'size_id' => $request->size_id,
+                'size_name' => $product_size->size_name,
+                'color_id' => $request->color_id,
+                'color_name' => $product_color->color_name,
                 'image' =>$product_info->image
             ]
         ]);

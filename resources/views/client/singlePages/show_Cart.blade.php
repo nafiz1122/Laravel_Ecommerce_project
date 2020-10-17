@@ -107,8 +107,10 @@
                         <li>Total <span>{{$total}} TK</span></li>
                     </ul>
                         <button type="submit" class="btn btn-default update" href="">Update</button>
-                        @if (@Auth::user()->id != NULL)
+                        @if (@Auth::user()->id != NULL && Session::get('shipping_id') == NULL)
                             <a class="btn btn-default check_out" href=" {{route('customers.checkout')}} ">Check Out</a>
+                        @elseif(@Auth::user()->id != NULL && Session::get('shipping_id') != NULL)
+                            <a class="btn btn-default check_out" href=" {{route('customer.payment')}} ">Check Out</a>
                         @else
                             <a class="btn btn-default check_out" href=" {{route('customers.login')}} ">Check Out</a>
                         @endif

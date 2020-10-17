@@ -29,7 +29,9 @@ Route::get('/customer-sign-up','CheckoutController@customer_sign_up')->name('cus
 Route::post('/customer-sign-up-store','CheckoutController@customer_sign_up_store')->name('store.sign-up');
 Route::get('/customer-sign-up-verify','CheckoutController@customer_sign_up_verify')->name('verify.sign-up');
 Route::post('/sign-up-verify-store','CheckoutController@sign_up_verify_store')->name('verify.store');
+//checkouts
 Route::get('/checkout','CheckoutController@checkOut')->name('customers.checkout');
+Route::post('/checkout/store','CheckoutController@checkoutStore')->name('customers.checkout.store');
 
 
 
@@ -39,6 +41,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth','customer']], function () {
 
     Route::get('/customer-dashboard','CustomerDashboardController@index');
+    Route::get('/customer-order-list','CustomerDashboardController@order_list')->name('customer.order.list');
+
+    Route::get('/payment','CustomerDashboardController@payment')->name('customer.payment');
+    Route::post('/paymentStore','CustomerDashboardController@paymentStore')->name('customer.payment.store');
 
 });
 //admin group route

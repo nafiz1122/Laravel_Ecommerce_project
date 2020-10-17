@@ -15,6 +15,11 @@ class CreateShippingsTable extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->comment('user_id = customer_id');
+            $table->string('name');
+            $table->string('email')->nullable();
+            $table->string('mobile_no')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

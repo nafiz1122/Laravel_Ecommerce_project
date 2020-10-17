@@ -90,29 +90,24 @@
 								{{-- <span class="product-available">In Stock</span> --}}
 							</div>
 							<p>{{$product->short_des}}</p>
-                            <form action=" {{route('cart.store')}} " method="POST">
-                                <input type="hidden" name="product_id" value=" {{$product->id}} " >
+                            <form action="{{route('cart.store')}}" method="POST">
                                 @csrf
+                                <input type="hidden" name="product_id" value="{{$product->id}} " >
 							<div class="product-options">
 								<label>
-									Size
-								 <select class="input-select">
-                                     @php
-                                     $sizes =App\ProductSize::where('product_id',$product->id)->get();
-                                     @endphp
-                                     @foreach ($sizes as $s)
-                                      <option value="0">{{$s['size']['size_name']}}</option>
+                                    Size
+                                </label>
+								 <select class="input-select" name="size_id">
+                                     @foreach($product_sizes as $size)
+                                        <option  value="{{$size->size_id}}">{{$size->size->size_name}}</option>
                                      @endforeach
 								  </select>
-								</label>
+
 								<label>
 									Color
-									<select class="input-select">
-										@php
-                                        $colors =App\ProductColor::where('product_id',$product->id)->get();
-                                        @endphp
-                                        @foreach ($colors as $c)
-                                        <option value="0">{{$c['color']['color_name']}}</option>
+									<select class="input-select" name="color_id">
+                                        @foreach ($product_colors as $cl)
+                                        <option  value="{{$cl->color_id}}">{{$cl['color']['color_name']}}</option>
                                         @endforeach
 									</select>
 								</label>

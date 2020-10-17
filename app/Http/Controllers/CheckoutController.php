@@ -10,8 +10,11 @@ use App\ProductSize;
 use App\ProductColor;
 use App\Product;
 use App\ProductSubImage;
+use App\Shipping;
 use Illuminate\Http\Request;
 use Mail;
+use Auth;
+use Session;
 class CheckoutController extends Controller
 {
     public function customer_login()
@@ -93,7 +96,25 @@ class CheckoutController extends Controller
 
     public function checkOut()
     {
-        dd("OK");
+        $categories = Product::select('category_id')->groupBy('category_id')->get();
+        return view('client.singlePages.customer-checkout',compact('categories'));
+    }
+
+    public function checkoutStore(REQUEST $request)
+    {
+        $checkout = new Shipping();
+        $checkout->user_id = Auth::user()->id;
+        $checkout->name = $request->name;
+        $checkout->email = $request->email;
+        $checkout->mobile_no = $request->phone;
+        $checkout->address = $request->address;
+        $checkout->save();
+        Session::put('shipping_id',$checkout->id);
+        $notification = array(
+            'message' =>'Data Saved Successfully',
+            'alert-type' =>'success'
+            );
+        return redirect()->route('customer.payment')->with($notification);
     }
 
 

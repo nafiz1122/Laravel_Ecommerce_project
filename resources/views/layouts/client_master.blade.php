@@ -202,7 +202,7 @@
 
 
 
-		<!-- jQuery Plugins -->
+        <!-- jQuery Plugins -->
 		<script src="/client_assets/js/jquery.min.js"></script>
 		<script src="/client_assets/js/bootstrap.min.js"></script>
 		<script src="/client_assets/js/slick.min.js"></script>
