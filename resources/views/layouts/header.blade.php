@@ -12,8 +12,7 @@
             @if(@Auth::user()->id != NULL)
             <li class="active-menu">
             <ul class="sub-menu" >
-                <li><a href="#"><i class="fa fa-user-o"></i> My Dashboard</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Profile</a></li>
+                <li><a href="{{route('customer.profile')}}"><i class="fa fa-user-o"></i> My Profile</a></li>
                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"
                      ><i class="fa fa-user-o"></i> Logout</a>

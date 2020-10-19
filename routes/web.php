@@ -40,8 +40,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //customer group route
 Route::group(['middleware' => ['auth','customer']], function () {
 
-    Route::get('/customer-dashboard','CustomerDashboardController@index');
+    Route::get('/customer-dashboard','CustomerDashboardController@index')->name('customer.profile');
     Route::get('/customer-order-list','CustomerDashboardController@order_list')->name('customer.order.list');
+    Route::get('/customer-order-details/{id}','CustomerDashboardController@order_details')->name('customer.order.details');
 
     Route::get('/payment','CustomerDashboardController@payment')->name('customer.payment');
     Route::post('/paymentStore','CustomerDashboardController@paymentStore')->name('customer.payment.store');

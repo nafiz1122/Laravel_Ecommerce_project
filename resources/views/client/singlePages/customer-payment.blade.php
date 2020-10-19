@@ -72,6 +72,17 @@
                                 <div class="col-md-5">
                                     <form action=" {{route('customer.payment.store')}}" method="POST">
                                         @csrf
+                                        <div class="col-md-12">
+                                            @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+                                    </div>
                                         <div class="form-group">
                                             <input type="hidden" name="order_total" value=" {{$total}} ">
                                             <select onchange="myFunction()" name="payment_method" id="payment_method" class="form-control">
@@ -84,7 +95,7 @@
                                             </font>
                                             <div id="show_field" style="margin-top: 8px;display:none;">
                                                 <label>Bkash No is:01683813854</label>
-                                                <input type="text" name="transation_no" class="form-control" placeholder="write transection no">
+                                                <input type="text" name="transaction_no" class="form-control" placeholder="write transection no">
                                             </div>
                                         </div>
 

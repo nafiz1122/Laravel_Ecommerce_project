@@ -31,7 +31,13 @@ class CustomerDashboardController extends Controller
         $this->validate($request,[
             'payment_method' => 'required',
         ]);
+        if($request->payment_method == 'Bkash'){
 
+            $this->validate($request,[
+                'transaction_no' => 'required',
+            ]);
+
+        }
         DB::transaction(function () use($request) {
             //payment
             $payment = new Payment();
@@ -70,7 +76,31 @@ class CustomerDashboardController extends Controller
                 $order_details->save();
             }
             Cart::destroy();
-            return redirect()->route('customer.order.list')->with('message','data Saved Successfully');
+
         });
+
+        return redirect()->route('customer.order.list')->with('message','data Saved Successfully');
+
+    }
+
+    public function order_list()
+    {
+        $categories = Product::select('category_id')->groupBy('category_id')->get();
+        $orders = Order::where('user_id',Auth::user()->id)->get();
+        return view('client.singlePages.customer-order-list',compact('categories','orders'));
+    }
+
+    public function order_details($id)
+    {
+        $order_data = Order::find($id);
+        $order =Order::where('id',$order_data->id)->where('user_id',Auth::user()->id)->first();
+        if($order == false){
+            echo "Don't Try Again";
+        }else{
+
+            $order =Order::where('id',$order_data->id)->where('user_id',Auth::user()->id)->first();
+            $categories = Product::select('category_id')->groupBy('category_id')->get();
+            return view('client.singlePages.customer-order-details',compact('categories','order'));
+        }
     }
 }
